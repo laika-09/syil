@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter For You, Dudu 𐀔</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pinyon+Script&family=Marcellus&display=swap');
+
+    :root {
+      --bg-burgundy: #1a0208;
+      --env-wine: #580d19;
+      --env-dark: #3a050d;
+      --gold-accent: #f8d77f;
+      --rose-gold: #ffb7c5;
+      --pink-glow: #ff65a3;
+      --violet-glow: #8a2be2;
+      --paper-bg: #fffbf5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0d0105;
+      font-family: 'Marcellus', serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Ambient Glowing Background */
+    .radiant-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 50% 25%, rgba(255, 101, 163, 0.35) 0%, transparent 60%),
+        radial-gradient(circle at 20% 75%, rgba(138, 43, 226, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 183, 197, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, var(--bg-burgundy) 0%, #050002 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .aurora-layer {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 101, 163, 0.15), rgba(138, 43, 226, 0.2), transparent 60%);
+      animation: auroraWave 12s infinite ease-in-out alternate;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes auroraWave {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(4deg) scale(1.08); }
+      100% { transform: rotate(-4deg) scale(1); }
+    }
+
+    /* Foreground Falling Particles */
+    .foreground-particle {
+      position: absolute;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 50;
+      animation: fall linear infinite;
+      will-change: transform;
+    }
+
+    .petal {
+      background: linear-gradient(135deg, #ffc0cb, #ff65a3);
+      border-radius: 12px 0 12px 0;
+    }
+
+    .heart-particle {
+      color: var(--pink-glow);
+      font-size: 14px;
+      text-shadow: 0 0 6px var(--pink-glow);
+    }
+
+    @keyframes fall {
+      0% { transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.6); opacity: 0.9; }
+      100% { transform: translate3d(0, 105vh, 0) rotate(360deg) scale(1.1); opacity: 0; }
+    }
+
+    .screen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      z-index: 10;
+      padding: 15px;
+    }
+
+    .screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.92);
+    }
+
+    .header-text {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffe4e8 0%, #ffb7c5 50%, #f8d77f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 12px rgba(255, 101, 163, 0.8));
+      transition: opacity 0.5s ease;
+      line-height: 1.1;
+    }
+
+    .sub-aesthetic {
+      display: block;
+      font-size: 1rem;
+      font-family: sans-serif;
+      color: #ffd1dc;
+      margin-top: 6px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 183, 197, 0.9), 0 0 12px rgba(255, 101, 163, 0.8);
+      opacity: 1;
+    }
+
+    .card-container {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 290px;
+      height: 200px;
+      background: linear-gradient(145deg, #420813, #220208);
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 101, 163, 0.35);
+      border: 1.5px solid rgba(248, 215, 127, 0.4);
+      cursor: pointer;
+      animation: gentleFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .envelope-flap-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 115px;
+      transform-origin: top;
+      transition: transform 0.7s ease, z-index 0.7s;
+      z-index: 4;
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(0deg, #580d19 0%, #3a050d 100%);
+      clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 100%, 0 100%);
+      border-radius: 0 0 12px 12px;
+      z-index: 3;
+    }
+
+    .bear-seal-top {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle, #ff3b75 0%, #7a0822 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      box-shadow: 0 0 18px rgba(255, 101, 163, 0.9);
+      border: 1.5px solid var(--gold-accent);
+      transition: opacity 0.5s;
+    }
+
+    .letter-paper {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 270px;
+      height: 180px;
+      background: var(--paper-bg);
+      border-radius: 10px;
+      padding: 14px 12px 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      z-index: 2;
+      transition: transform 0.8s ease, height 0.8s ease, z-index 0.1s 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .paper-scroll-area {
+      width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 2px;
+    }
+
+    .paper-scroll-area::-webkit-scrollbar { width: 4px; }
+    .paper-scroll-area::-webkit-scrollbar-thumb { background: #8c4253; border-radius: 4px; }
+
+    .aesthetic-divider {
+      font-size: 0.75rem;
+      color: #8c4253;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin: 12px 0;
+      text-shadow: 0 0 4px rgba(140, 66, 83, 0.3);
+    }
+
+    .letter-content {
+      color: #3b0e19;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: normal;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .letter-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .paper-bear-seal {
+      width: 32px;
+      height: 32px;
+      background: radial-gradient(circle, #ff3b75 0%, #7a0822 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold-accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      font-size: 16px;
+    }
+
+    .next-btn, .modal-action-btn {
+      background: linear-gradient(135deg, #a11b37, #580d19);
+      border: 1px solid var(--gold-accent);
+      color: #fff0f3;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-family: 'Marcellus', serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 101, 163, 0.5);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .next-btn:active, .modal-action-btn:active { transform: scale(0.95); }
+
+    .card-container.open .envelope-flap-svg { transform: rotateX(180deg); z-index: 1; }
+    .card-container.open .bear-seal-top { opacity: 0; pointer-events: none; }
+    .card-container.open .letter-paper { transform: translateY(-110px); height: 320px; z-index: 20; }
+    .card-container.open .header-text { opacity: 0; }
+
+    /* Dashboard Option Buttons */
+    .dashboard-container {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 10px;
+    }
+
+    .dash-title {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 3rem;
+      text-align: center;
+      background: linear-gradient(135deg, #ffe4e8 0%, #ffb7c5 50%, #f8d77f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px rgba(255, 101, 163, 0.9));
+      line-height: 1;
+    }
+
+    .dash-symbol {
+      font-size: 0.95rem;
+      color: #ffd1dc;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 101, 163, 0.8);
+    }
+
+    .floating-buttons-wrapper {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .dash-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(88, 13, 25, 0.92), rgba(58, 5, 13, 0.95));
+      border: 1.5px solid var(--gold-accent);
+      color: #fff0f3;
+      padding: 12px 18px;
+      border-radius: 18px;
+      font-family: 'Marcellus', serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6), 0 0 15px rgba(255, 101, 163, 0.3);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: floatMotion 5s infinite ease-in-out alternate;
+      width: fit-content;
+      max-width: 88%;
+    }
+
+    .btn-pos-1 { align-self: flex-start; margin-left: 4%; transform: rotate(-3deg); animation-delay: 0s; }
+    .btn-pos-2 { align-self: flex-end; margin-right: 4%; transform: rotate(3deg); animation-delay: 1s; }
+    .btn-pos-3 { align-self: flex-start; margin-left: 8%; transform: rotate(-2deg); animation-delay: 2s; }
+    .btn-pos-4 { align-self: flex-end; margin-right: 6%; transform: rotate(2deg); animation-delay: 0.5s; }
+    .btn-pos-5 { align-self: flex-start; margin-left: 6%; transform: rotate(-3deg); animation-delay: 1.5s; }
+
+    @keyframes floatMotion {
+      0% { transform: translateY(0px) rotate(-2deg); }
+      100% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    /* Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(10, 0, 3, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 100;
+      padding: 15px;
+    }
+
+    .modal.active { opacity: 1; pointer-events: auto; }
+
+    .modal-box {
+      width: 100%;
+      max-width: 340px;
+      max-height: 88vh;
+      background: var(--paper-bg);
+      border: 1.5px solid var(--gold-accent);
+      border-radius: 16px;
+      padding: 22px 18px 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.85);
+      text-align: center;
+      color: #3b0e19;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* DARK RADIANT THEME FOR AMAZING PAGE */
+    .modal-box.dark-radiant-theme {
+      background: linear-gradient(145deg, #2b030b 0%, #150005 50%, #30020d 100%);
+      border: 1.5px solid var(--gold-accent);
+      box-shadow: 0 0 35px rgba(255, 101, 163, 0.5), inset 0 0 20px rgba(255, 183, 197, 0.2);
+      color: #ffffff;
+    }
+
+    .modal-box.dark-radiant-theme h3 {
+      color: #ffb7c5;
+      text-shadow: 0 0 12px rgba(255, 101, 163, 0.9);
+    }
+
+    .modal-box.dark-radiant-theme p {
+      color: #ffffff !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .modal-box.dark-radiant-theme .aesthetic-divider {
+      color: #ffb7c5;
+      text-shadow: 0 0 6px rgba(255, 101, 163, 0.6);
+    }
+
+    .modal-box h3 {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.3rem;
+      color: #7a0822;
+      line-height: 1.1;
+    }
+
+    /* SIMPLE FONTS FOR MODAL TEXT */
+    .modal-box p, .modal-text-simple {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      font-weight: normal;
+      margin: 10px 0;
+      color: #3b0e19;
+    }
+
+    .tap-hint-banner {
+      font-family: 'Marcellus', serif;
+      font-size: 0.8rem;
+      color: #ffffff;
+      background: rgba(255, 101, 163, 0.35);
+      padding: 6px 14px;
+      border-radius: 12px;
+      margin: 8px 0;
+      border: 1px dashed var(--gold-accent);
+      animation: pulseGlow 2s infinite;
+      box-shadow: 0 0 10px rgba(255, 101, 163, 0.5);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+
+    .polaroid-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin: 15px 0 25px;
+      width: 100%;
+    }
+
+    .polaroid-card {
+      background: #ffffff;
+      padding: 10px 10px 12px 10px;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 190px;
+      border: 1px solid #eaeaea;
+      transition: transform 0.3s;
+    }
+
+    .polaroid-img-box {
+      width: 170px;
+      height: 170px;
+      overflow: hidden;
+      background: #f0f0f0;
+      border-radius: 2px;
+    }
+
+    .polaroid-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid-heart-caption {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ff3b75;
+      line-height: 1;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    /* SWIPE SLIDER STYLES FOR IMPRESSION */
+    .swipe-container {
+      width: 100%;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .swipe-track {
+      position: relative;
+      width: 240px;
+      height: 50px;
+      background: rgba(88, 13, 25, 0.15);
+      border: 1.5px solid var(--gold-accent);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 15px;
+      overflow: hidden;
+    }
+
+    .swipe-text {
+      font-family: 'Marcellus', serif;
+      font-size: 0.85rem;
+      color: #7a0822;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    .swipe-bear-handle {
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #a11b37, #580d19);
+      border: 1px solid var(--gold-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: grab;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
+      touch-action: none;
+    }
+
+    /* SPECIAL KISS STAGE */
+    .kiss-stage {
+      position: relative;
+      width: 280px;
+      height: 160px;
+      background: linear-gradient(135deg, #fff0f3, #ffe4e8);
+      border: 1.5px dashed #ff65a3;
+      border-radius: 16px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    .kiss-hint-text {
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Marcellus', serif;
+      font-size: 0.8rem;
+      color: #7a0822;
+      font-weight: bold;
+      letter-spacing: 1px;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* Cut Images as Stickers */
+    .bear-sticker-img {
+      position: absolute;
+      top: 30px;
+      height: 110px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brown-bear-img {
+      left: 10px;
+      z-index: 10;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      transition: left 0.1s linear;
+    }
+
+    .brown-bear-img:active { cursor: grabbing; }
+
+    .white-bear-img {
+      right: 10px;
+      z-index: 5;
+    }
+
+    /* Music Control Button */
+    .music-control-btn {
+      background: linear-gradient(135deg, #f8d77f, #d4af37);
+      color: #3b0e19;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .music-track-label {
+      min-height: 18px;
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 0.74rem;
+      font-weight: bold;
+      letter-spacing: 0.6px;
+      color: #fff2d9;
+      text-shadow: 0 0 10px rgba(255, 183, 197, 0.8);
+    }
+
+    .music-player-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      margin: 0 0 10px;
+    }
+
+    .music-disc {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border: 3px solid #f8d77f;
+      border-radius: 50%;
+      background: repeating-radial-gradient(circle, #b58a2a 0 2px, #4a0a16 3px 5px, #d4af37 6px 7px);
+      box-shadow: 0 0 12px rgba(248, 215, 127, 0.7);
+      position: relative;
+    }
+
+    .music-disc::after {
+      content: '';
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #f8d77f;
+      border-radius: 50%;
+      background: #580d19;
+    }
+
+    .music-disc.is-playing { animation: spinDisc 2.2s linear infinite; }
+
+    @keyframes spinDisc {
+      to { transform: rotate(360deg); }
+    }
+
+    .music-title {
+      color: #fff2d9;
+      font-family: 'Marcellus', serif;
+      font-size: 0.95rem;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 183, 197, 0.8);
+    }
+
+    .music-artist {
+      margin-top: 2px;
+      color: var(--gold-accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.8px;
+      font-weight: bold;
+    }
+
+    .modal-bottom-actions {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 5px;
+    }
+
+    /* PHOTOBOOTH STRIP STYLING */
+    .photobooth-strip {
+      background: #ffffff;
+      padding: 12px 10px 18px 10px;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 190px;
+      border: 1px solid #e0e0e0;
+      margin: 15px 0;
+    }
+
+    .photobooth-photo {
+      width: 170px;
+      height: 140px;
+      background: #f5f5f5;
+      overflow: hidden;
+      border-radius: 3px;
+      border: 1px solid #eeeeee;
+    }
+
+    .photobooth-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photobooth-bear-footer {
+      font-size: 28px;
+      margin-top: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    /* COUNTDOWN DASHBOARD CARDS */
+    .counter-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    .counter-card {
+      background: linear-gradient(135deg, rgba(88, 13, 25, 0.08), rgba(58, 5, 13, 0.12));
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .counter-num {
+      font-family: Arial, sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #7a0822;
+    }
+
+    .counter-label {
+      font-size: 0.72rem;
+      color: #555;
+      margin-top: 2px;
+      font-weight: bold;
+    }
+
+    .anniversary-card-wide {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #580d19, #3a050d);
+      color: #f8d77f;
+      border: 1px solid var(--gold-accent);
+    }
+
+    .anniversary-card-wide .counter-num {
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(255, 101, 163, 0.8);
+    }
+
+    .anniversary-card-wide .counter-label {
+      color: #ffd1dc;
+    }
+
+    /* FLOATING PUNCHING FISTS ANIMATION */
+    .fist-floating {
+      position: absolute;
+      font-size: 28px;
+      pointer-events: none;
+      animation: floatFist 2.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes floatFist {
+      0% { transform: translateY(0) scale(1) rotate(0deg); }
+      100% { transform: translateY(-15px) scale(1.2) rotate(15deg); }
+    }
+
+    /* Butterflies */
+    .butterfly {
+      position: absolute;
+      width: 18px; height: 18px;
+      pointer-events: none;
+      z-index: 60;
+      animation: butterflyFly 10s infinite ease-in-out;
+      will-change: transform;
+    }
+
+    .butterfly::before, .butterfly::after {
+      content: '';
+      position: absolute;
+      width: 11px; height: 16px;
+      background: linear-gradient(45deg, var(--pink-glow), var(--violet-glow));
+      border-radius: 11px 11px 0 11px;
+      opacity: 0.9;
+      box-shadow: 0 0 10px var(--pink-glow);
+    }
+
+    .butterfly::before { left: 0; animation: flapL 0.2s infinite alternate; }
+    .butterfly::after { right: 0; border-radius: 11px 11px 11px 0; animation: flapR 0.2s infinite alternate; }
+
+    @keyframes flapL { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(60deg); } }
+    @keyframes flapR { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(-60deg); } }
+
+    @keyframes butterflyFly {
+      0% { transform: translate3d(0, 0, 0) scale(0.8); }
+      25% { transform: translate3d(80px, -120px, 0) scale(1.1); }
+      50% { transform: translate3d(-60px, -240px, 0) scale(0.9); }
+      75% { transform: translate3d(90px, -360px, 0) scale(1); }
+      100% { transform: translate3d(-40px, -480px, 0) scale(0.8); }
+    }
+
+    /* Slow & Soft Heart Burst Animation */
+    .burst-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 200;
+      font-size: 26px;
+      animation: slowHeartBoom 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes slowHeartBoom {
+      0% { 
+        transform: translate3d(0, 0, 0) scale(0.3); 
+        opacity: 0.9; 
+      }
+      50% { 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate3d(var(--dx), var(--dy), 0) scale(1.6); 
+        opacity: 0; 
+      }
+    }
+
+    /* HIGH-PERFORMANCE SMOOTH TAP FIREWORKS */
+    .firework-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 300;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      white-space: nowrap;
+      animation: smoothFirework 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    /* CURSIVE FIREWORKS CLASS FOR SPECIFIC WORDS */
+    .firework-cursive {
+      font-family: 'Dancing Script', cursive !important;
+      font-size: 28px !important;
+      font-weight: bold;
+      filter: drop-shadow(0 0 6px var(--pink-glow));
+    }
+
+    @keyframes smoothFirework {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0.3) rotate(0deg);
+        opacity: 1;
+      }
+      60% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(var(--fwx), var(--fwy), 0) scale(1.3) rotate(var(--fwr));
+        opacity: 0;
+      }
+    }
+
+    /* FLYING FLOWERS BOUQUET ANIMATION */
+    .flying-flower {
+      position: fixed;
+      pointer-events: none;
+      z-index: 250;
+      font-size: 32px;
+      transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), left 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), top 1.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.6s;
+      will-change: transform, left, top;
+      filter: drop-shadow(0 0 10px rgba(255, 101, 163, 0.8));
+    }
+
+    .assembled-bouquet-container {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin: 20px 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(255, 101, 163, 0.45) 0%, rgba(138, 43, 226, 0.2) 60%, transparent 80%);
+      border-radius: 50%;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 0 35px rgba(255, 101, 163, 0.85), inset 0 0 15px rgba(248, 215, 127, 0.6);
+      animation: bouquetGlowPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes bouquetGlowPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255, 101, 163, 0.6); }
+      50% { transform: scale(1.04); box-shadow: 0 0 45px rgba(248, 215, 127, 0.95); }
+    }
+
+    .assembled-bouquet-img {
+      font-size: 120px;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      animation: gentleFloat 3s infinite ease-in-out;
+    }
+
+    .orbit-butterfly {
+      position: absolute;
+      font-size: 22px;
+      pointer-events: none;
+      animation: orbitAround 4s infinite linear;
+    }
+
+    @keyframes orbitAround {
+      0% { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="radiant-bg"></div>
+  <div class="aurora-layer"></div>
+  <div id="particles-container"></div>
+  <div id="butterflies-container"></div>
+  <audio id="envelopeMusic" autoplay loop preload="auto" playsinline></audio>
+
+  <!-- Screen 1: Envelope Screen -->
+  <div class="screen" id="envelopeScreen">
+    <div class="card-container" id="cardContainer">
+      <div class="header-text">
+        For My Dearest Dudu...
+        <span class="sub-aesthetic">✮ ⋆ ˚｡𖦹 ⋆｡°✩</span>
+      </div>
+
+      <div class="envelope-wrapper" id="envelope">
+        <svg class="envelope-flap-svg" viewBox="0 0 290 115" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="flapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7a0822" />
+              <stop offset="50%" stop-color="#580d19" />
+              <stop offset="100%" stop-color="#3a050d" />
+            </linearGradient>
+          </defs>
+          <path d="M 0,0 L 290,0 L 290,15 C 250,50 190,100 145,105 C 100,100 40,50 0,15 Z" fill="url(#flapGrad)" stroke="#f8d77f" stroke-width="1.5" />
+        </svg>
+
+        <div class="bear-seal-top">
+          <span style="font-size: 26px;">🧸</span>
+        </div>
+
+        <div class="letter-paper">
+          <div class="paper-scroll-area">
+            <div class="aesthetic-divider">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+            
+            <div class="letter-content">
+              I love you so much, my Dudu. Alam ko na pagod ka today, and I just want to make you feel loved and cared for.<br><br>
+              I really appreciate everything you do, and I understand how hard you work every day. Seeing you make an effort means the world to me.<br><br>
+              Lagi mong tatandaan na andito lang ako palagi para sa'yo, loving you and supporting you every step of the way. 𐀔
+            </div>
+            
+            <div class="letter-footer">
+              <div class="paper-bear-seal">🧸</div>
+              <button class="next-btn" onclick="transitionToDashboard(event)">Next page, Dudu ♥</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope-pocket"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 2: Dashboard -->
+  <div class="screen hidden" id="dashboardScreen">
+    <div class="dashboard-container">
+      <div>
+        <h2 class="dash-title">For My Love, Dudu</h2>
+        <div class="dash-symbol" style="text-align: center;">✮ ⋆ ˚｡𖦹 ⋆｡°✩𓂃 ࣪˖ ִֶָ𐀔</div>
+      </div>
+      
+      <div class="floating-buttons-wrapper">
+        <button class="dash-card btn-pos-1" onclick="startLoveLetterJoke()">
+          Wanna read my letter for you, love? 💌
+        </button>
+        
+        <button class="dash-card btn-pos-2" onclick="startImpressionFlow()">
+          My first impression to u 𓍯
+        </button>
+        
+        <button class="dash-card btn-pos-3" onclick="startSpecialKissFlow()">
+          Wanna see something special? ✮⋆
+        </button>
+        
+        <button class="dash-card btn-pos-4" onclick="startDaysTogetherFlow()">
+          Days we've been together 🗓️
+        </button>
+        
+        <button class="dash-card btn-pos-5" onclick="startApologyFlow()">
+          My apology ﮩ٨ـﮩ♡
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Modal -->
+  <div class="modal" id="contentModal">
+    <div class="modal-box" id="modalBox">
+      <!-- Dynamic Content Generated via JS -->
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const cardContainer = document.getElementById('cardContainer');
+    
+    // Audio Player
+    const envelopeTrack = 'run away.mp3';
+    const letterTrack = envelopeTrack;
+    const envelopeMusic = document.getElementById('envelopeMusic');
+    let bgMusic = envelopeMusic;
+    let currentTrack = envelopeTrack;
+
+    function resolveTrackUrl(trackName) {
+      return new URL(trackName, window.location.href).href;
+    }
+
+    function setAudioSource(audio, trackName) {
+      const target = resolveTrackUrl(trackName);
+      if (audio.src !== target) {
+        audio.src = target;
+        audio.load();
+      }
+      return audio;
+    }
+
+    function updateMusicLabel(trackName) {
+      const label = document.getElementById('musicTrackLabel');
+      if (!label) return;
+      const displayName = 'Runaway';
+      const title = label.querySelector('.music-title');
+      if (title) {
+        title.innerText = displayName;
+        const artist = label.querySelector('.music-artist');
+        if (artist) artist.innerText = 'by The Corrs';
+      } else {
+        label.innerText = `Now Playing: ${displayName} by The Corrs`;
+      }
+    }
+
+    function musicPlayerMarkup() {
+      const displayName = 'Runaway';
+      const playingClass = bgMusic && !bgMusic.paused ? ' is-playing' : '';
+      return `
+        <div id="musicTrackLabel" class="music-track-label">
+          <div class="music-player-display">
+            <div class="music-disc${playingClass}" aria-hidden="true"></div>
+            <div>
+              <div class="music-title">${displayName}</div>
+              <div class="music-artist">by The Corrs</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateMusicVisual() {
+      updateMusicLabel(currentTrack);
+      const disc = document.querySelector('.music-disc');
+      if (disc) disc.classList.toggle('is-playing', !bgMusic.paused);
+    }
+
+    function playAudio(audio, musicBtnText) {
+      audio.muted = false;
+      audio.play().then(() => {
+        if (musicBtnText) musicBtnText.innerText = 'Pause Music';
+        updateMusicVisual();
+      }).catch(() => {
+        if (musicBtnText) musicBtnText.innerText = 'Play Music';
+        updateMusicVisual();
+      });
+    }
+
+    setAudioSource(envelopeMusic, envelopeTrack);
+
+    envelopeMusic.preload = 'auto';
+    envelopeMusic.autoplay = true;
+    envelopeMusic.loop = true;
+    envelopeMusic.volume = 0.8;
+
+    function setMusicTrack(trackName, autoPlay = false) {
+      const musicBtnText = document.getElementById('musicBtnText');
+      const target = resolveTrackUrl(trackName);
+      const trackChanged = bgMusic.src !== target;
+
+      // Stop the current song before changing pages so tracks never overlap.
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      if (trackChanged) {
+        setAudioSource(bgMusic, trackName);
+      }
+      currentTrack = trackName;
+
+      updateMusicVisual();
+
+      if (autoPlay) {
+        playAudio(bgMusic, musicBtnText);
+      } else if (!bgMusic.paused) {
+        bgMusic.pause();
+        updateMusicVisual();
+        if (musicBtnText) musicBtnText.innerText = 'Play Music';
+      }
+
+      // The modal controls are rendered after this function is called.
+      setTimeout(() => {
+        updateMusicVisual();
+        const renderedMusicBtnText = document.getElementById('musicBtnText');
+        if (renderedMusicBtnText) {
+          renderedMusicBtnText.innerText = bgMusic.paused ? 'Play Music' : 'Pause Music';
+        }
+      }, 0);
+    }
+
+    envelopeMusic.onerror = function() {
+      console.warn('Unable to load the intro track:', envelopeTrack);
+    };
+
+    function startMusicFromUserGesture() {
+      const musicBtnText = document.getElementById('musicBtnText');
+      if (!bgMusic || !bgMusic.src) return;
+      playAudio(bgMusic, musicBtnText);
+    }
+
+    // Try to start the intro track while the envelope screen is visible.
+    playAudio(envelopeMusic, null);
+
+    let isOpen = false;
+    let enableTapFireworks = false;
+    let enableFireworks = false;
+
+    window.addEventListener('pageshow', function() {
+      document.getElementById('envelopeScreen').classList.remove('hidden');
+      document.getElementById('dashboardScreen').classList.add('hidden');
+      cardContainer.classList.remove('open');
+      isOpen = false;
+      setMusicTrack(envelopeTrack, false);
+      bgMusic.currentTime = 0;
+      bgMusic.load();
+      setMusicTrack(envelopeTrack, true);
+    });
+
+    envelope.addEventListener('click', function() {
+      startMusicFromUserGesture();
+      if (!isOpen) {
+        isOpen = true;
+        cardContainer.classList.add('open');
+        spawnBurstButterflies();
+      }
+    });
+
+    function transitionToDashboard(e) {
+      e.stopPropagation();
+      setMusicTrack(envelopeTrack, true);
+      document.getElementById('envelopeScreen').classList.add('hidden');
+      setTimeout(() => {
+        setMusicTrack(envelopeTrack, true);
+        document.getElementById('dashboardScreen').classList.remove('hidden');
+      }, 400);
+    }
+
+    /* --- FIRST BUTTON FLOW: LOVE LETTER JOKE --- */
+    function startLoveLetterJoke() {
+      disableFireworks();
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      setMusicTrack(letterTrack, true);
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>Oops... 🤨</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        <p>Ayaw ko, inaaway mo lang naman ako 🤨</p>
+        <div class="aesthetic-divider" style="margin-bottom: 15px;">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+        <button class="modal-action-btn" onclick="showApologyResponse()">Sorry na 🥺</button>
+      `;
+      document.getElementById('contentModal').classList.add('active');
+    }
+
+    function showApologyResponse() {
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>Yay! 🥰</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        <p>Ok, sighe, i forgive u na. Iloveyousomuch, enjoy reading! 💕</p>
+        <div class="aesthetic-divider" style="margin-bottom: 15px;">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+        <button class="modal-action-btn" onclick="showMainLoveLetter()">Read Letter 💌</button>
+      `;
+    }
+
+    function showMainLoveLetter() {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      setMusicTrack(letterTrack, true);
+
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>A Letter For My Dudu 𐀔</h3>
+        ${musicPlayerMarkup()}
+
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩𓂃 ࣪˖ ִֶָ𐀔</div>
+        
+        <p style="text-align: center; margin-top: 10px;">
+          I just want to remind you how deeply I love you. Even when we have small misunderstandings or when I get a bit annoying sometimes, my love for you will never change.<br><br>
+          For the longest time, I honestly thought I was difficult to love, and I was always afraid of being a burden to someone. But you completely proved me wrong. Through your actions, your endless patience, and the way you treat me, you made me realize that I am worthy of love and effort. You showed me that loving me isn't a chore for you, and for the first time, I actually feel safe, valued, and deserving of a soft, genuine love. You made me realize that life can be so much more beautiful when you are with someone you really love, and that it is truly worth living.<br><br>
+          I am also so immensely proud of the man you are, not just to me, but to everyone around you. You are exceptionally hardworking, incredibly kind, and such a loving, respectful son to your family. Seeing how much heart you put into everything you do makes me respect and admire you more every day. Thank you from the bottom of my heart for all your love, for always making time for me, and for every sweet gift and surprise you give me just to see me smile.<br><br>
+          That’s why I dedicated "You and Me" by Lifehouse to you. There’s a line in the song that goes, "There's something about you now with the way I'm looking at you, it's all I can do, all I can do is think of you." That is exactly how I feel every time I look at you. In a world that is often loud, chaotic, and overwhelming, you become my quiet place. Whenever this song plays, it reminds me of how all the background noise just fades away when I’m with you. It doesn't matter what's happening around us, because at the end of the day, it's always just you and me. You are my clarity, my peace, and my favorite person.<br><br>
+          I am so grateful to have you in my life. Thank you for choosing me, for understanding me, and for staying by my side. I promise to always be here for you, supporting your dreams, taking care of you, and loving you unconditionally. On days when you feel tired or overwhelmed, please always remember that you can always lean on me.ILOVEYOU SO MUCH MAHALAN KO, IMISSYOU😚🌹.<br><br>
+          Thank you for making my life so much brighter and sweeter. I love you so much, my forever! 💖
+        </p>
+
+        <div class="aesthetic-divider">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+
+        <div class="polaroid-container">
+          <div class="polaroid-card">
+            <div class="polaroid-img-box">
+              <img src="5.jpg" alt="Brown Bear Kiss">
+            </div>
+            <div class="polaroid-heart-caption">💋 Forever & Always 💖</div>
+          </div>
+        </div>
+
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+
+        <div class="modal-bottom-actions">
+          <button class="modal-action-btn" onclick="closeModal()">Done reading love? 💖</button>
+        </div>
+      `;
+    }
+
+    /* --- SECOND BUTTON FLOW: MY IMPRESSION TO U --- */
+    function startImpressionFlow() {
+      disableFireworks();
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>My Impression To U 𓍯</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        <p>Swipe the bear to read, my love! ✨</p>
+        
+        <div class="swipe-container">
+          <div class="swipe-track" id="swipeTrack">
+            <span class="swipe-text">Swipe to read ➔</span>
+            <div class="swipe-bear-handle" id="swipeHandle">🧸</div>
+          </div>
+        </div>
+      `;
+      document.getElementById('contentModal').classList.add('active');
+      initSwipeLogic();
+    }
+
+    function initSwipeLogic() {
+      const handle = document.getElementById('swipeHandle');
+      const track = document.getElementById('swipeTrack');
+      if (!handle || !track) return;
+
+      let isDragging = false;
+      let startX, currentX;
+      const maxSwipe = track.offsetWidth - handle.offsetWidth - 4;
+
+      function onStart(e) {
+        isDragging = true;
+        startX = (e.touches ? e.touches[0].clientX : e.clientX) - handle.offsetLeft;
+      }
+
+      function onMove(e) {
+        if (!isDragging) return;
+        currentX = (e.touches ? e.touches[0].clientX : e.clientX) - startX;
+        if (currentX < 2) currentX = 2;
+        if (currentX > maxSwipe) currentX = maxSwipe;
+        handle.style.left = currentX + 'px';
+
+        if (currentX >= maxSwipe - 5) {
+          isDragging = false;
+          showSwipeJokeResponse();
+        }
+      }
+
+      function onEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        if (currentX < maxSwipe - 5) {
+          handle.style.left = '2px';
+        }
+      }
+
+      handle.addEventListener('mousedown', onStart);
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onEnd);
+
+      handle.addEventListener('touchstart', onStart);
+      document.addEventListener('touchmove', onMove);
+      document.addEventListener('touchend', onEnd);
+    }
+
+    function showSwipeJokeResponse() {
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>Hala ka! 😭</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        <p style="color: #7a0822;">
+          Bakit mo ni-swipe, pag ba sinabi ko sa'yong iwan mo na ako, iiwan mo talaga ako? Wala na sad na ako 😭😭😭😭. Need ko kiss
+        </p>
+        <div class="aesthetic-divider" style="margin-bottom: 15px;">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+        <button class="modal-action-btn" onclick="showImpressionLetter()">Eme, click mo 'to 💖</button>
+      `;
+    }
+
+    function showImpressionLetter() {
+      setMusicTrack(envelopeTrack, true);
+
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>My First Impression To U 𓍯</h3>
+        ${musicPlayerMarkup()}
+
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩𓂃 ࣪˖ ִֶָ𐀔</div>
+
+        <p style="text-align: center; margin-top: 10px;">
+          To my handsome Boyfie,<br><br>
+          When I first met you, I honestly thought you were a bad boy and a playboy who wasn't serious at all, hahahaha! That's why I kept ghosting you before because I thought you were just playing around. Even when I was so cold, hard to talk to, and mean to you, you never gave up on me. You stayed patient and kept showing up anyway. As we slowly interacted more, I got to know the real you and realized how wrong I was. Behind all that, you turned out to be one of the sweetest, most caring, and sweetest people I have ever met.<br><br>
+          The more time I spend with you, the more I see how good you really are as a person. I am so proud of you, not just as my boyfriend, but for the kind of man that you are every single day. You work so hard, you love your family so much, you are a loyal friend, and above all, you are a true man of God. Even when people do you wrong or hurt you, you still choose to forgive them and stay kind. It makes me so happy to see how much love, effort, and patience you give to everyone around you.<br><br>
+          Thank you for proving me wrong in the best way and for never giving up on us! Who would have thought that the guy I used to ghost would end up being my favorite safe place and rest? You made me realize that the person I almost pushed away is actually the best thing that ever happened to me. I am so thankful to have you in my life, my Dudu!<br><br>
+          You have this gentle heart that makes me feel safe every day. Tahanan kita, Dudu. Thank you for being my favorite person! 💖
+        </p>
+
+        <div class="aesthetic-divider">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+
+        <div class="polaroid-container">
+          <div class="polaroid-card">
+            <div class="polaroid-img-box">
+              <img src="3.jpg" alt="White Bear Kiss">
+            </div>
+            <div class="polaroid-heart-caption">🧸 My Favorite Person 💖</div>
+          </div>
+        </div>
+
+        <div class="modal-bottom-actions">
+          <button class="modal-action-btn" onclick="closeModal()">Back to Menu ↩</button>
+        </div>
+      `;
+    }
+
+    /* --- THIRD BUTTON FLOW: WANNA SEE SOMETHING SPECIAL (KISS INTERACTIVE) --- */
+    function startSpecialKissFlow() {
+      disableFireworks();
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>Kiss Me To Unlock 💋</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        <p style="font-size: 0.95rem;">Swipe Brown Bear (Left) to kiss White Bear (Right)! 💖</p>
+        
+        <div class="kiss-stage" id="kissStage">
+          <div class="kiss-hint-text">Kiss me to unlock! 😘</div>
+          <img src="1788766817719.jpeg" class="bear-sticker-img brown-bear-img" id="brownBear" alt="Brown Bear">
+          <img src="1788766831823.jpeg" class="bear-sticker-img white-bear-img" id="whiteBear" alt="White Bear">
+        </div>
+      `;
+      document.getElementById('contentModal').classList.add('active');
+      initKissDragLogic();
+    }
+
+    function initKissDragLogic() {
+      const brownBear = document.getElementById('brownBear');
+      const whiteBear = document.getElementById('whiteBear');
+      const kissStage = document.getElementById('kissStage');
+      if (!brownBear || !whiteBear || !kissStage) return;
+
+      let isDragging = false;
+      let startX, initialLeft;
+      let hasKissed = false;
+
+      function onStart(e) {
+        if (hasKissed) return;
+        isDragging = true;
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        initialLeft = brownBear.offsetLeft;
+        brownBear.style.transition = 'none';
+      }
+
+      function onMove(e) {
+        if (!isDragging || hasKissed) return;
+        const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+        const deltaX = currentX - startX;
+        let newLeft = initialLeft + deltaX;
+
+        const maxLeft = kissStage.clientWidth - brownBear.clientWidth;
+        if (newLeft < 5) newLeft = 5;
+        if (newLeft > maxLeft) newLeft = maxLeft;
+
+        brownBear.style.left = newLeft + 'px';
+
+        const brownRect = brownBear.getBoundingClientRect();
+        const whiteRect = whiteBear.getBoundingClientRect();
+
+        if (brownRect.right >= whiteRect.left - 2) {
+          hasKissed = true;
+          isDragging = false;
+          
+          const kissPos = kissStage.clientWidth - whiteBear.clientWidth - brownBear.clientWidth + 12;
+          brownBear.style.left = kissPos + 'px';
+
+          triggerHeartBoom(brownRect.right, brownRect.top + brownRect.height / 2);
+
+          setTimeout(() => {
+            showSpecialUnlockedContent();
+          }, 800);
+        }
+      }
+
+      function onEnd() {
+        if (!isDragging || hasKissed) return;
+        isDragging = false;
+        brownBear.style.transition = 'left 0.3s ease';
+        brownBear.style.left = '10px';
+      }
+
+      brownBear.addEventListener('mousedown', onStart);
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onEnd);
+
+      brownBear.addEventListener('touchstart', onStart, {passive: true});
+      document.addEventListener('touchmove', onMove, {passive: true});
+      document.addEventListener('touchend', onEnd);
+    }
+
+    function triggerHeartBoom(posX, posY) {
+      for (let i = 0; i < 20; i++) {
+        const h = document.createElement('div');
+        h.className = 'burst-heart';
+        h.innerText = ['💖', '💕', '💋', '❤️', '🌸', '✨'][Math.floor(Math.random() * 6)];
+        h.style.left = posX + 'px';
+        h.style.top = posY + 'px';
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 50 + Math.random() * 120;
+        const dx = Math.cos(angle) * dist + 'px';
+        const dy = (Math.sin(angle) * dist - 30) + 'px';
+
+        h.style.setProperty('--dx', dx);
+        h.style.setProperty('--dy', dy);
+
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+      }
+    }
+
+    /* --- SPECIAL UNLOCKED PAGE --- */
+    function showSpecialUnlockedContent() {
+      setMusicTrack(envelopeTrack, true);
+      enableFireworks = true;
+
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.add('dark-radiant-theme');
+      modalBox.innerHTML = `
+        ${musicPlayerMarkup()}
+
+        <div class="tap-hint-banner" style="margin-top: 15px;">
+          ✨ Tap screen for Fireworks! ✨
+        </div>
+
+        <div style="height: 35px;"></div>
+
+        <p style="text-align: center; color: #ffffff; font-size: 1.05rem; line-height: 1.6; padding: 0 10px;">
+          You are the most amazing and special person in my life, Dudu! 🥰
+        </p>
+
+        <div style="height: 25px;"></div>
+
+        <p style="text-align: center; color: #ffffff; font-size: 1.05rem; line-height: 1.6; padding: 0 10px;">
+          Every moment with you feels like magic. Thank you for giving me the sweetest kisses and the warmest hugs! I love you endlessly! 💕
+        </p>
+
+        <div class="aesthetic-divider" style="margin: 25px 0 15px;">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+
+        <div id="flowerContainerArea" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
+
+        <div class="modal-bottom-actions">
+          <button class="modal-action-btn" id="bouquetBtn" onclick="triggerFlyingBouquetAnimation(event)">
+            I have something for you 💐
+          </button>
+          
+          <button class="modal-action-btn" onclick="closeModal()" style="background: transparent; border: 1px solid var(--gold-accent); color: var(--gold-accent);">
+            Back to Menu ↩
+          </button>
+        </div>
+      `;
+    }
+
+    /* --- FOURTH BUTTON FLOW: DAYS WE'VE BEEN TOGETHER --- */
+    function startDaysTogetherFlow() {
+      disableFireworks();
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>A Question For U 🤨</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        
+        <p style="text-align: center; font-size: 0.98rem; line-height: 1.6; margin: 15px 0;">
+          Do you really want to spend your life with me? 🤨<br>
+          Bahala ka, lagi pa naman kitang aawayin.
+        </p>
+
+        <div style="display: flex; gap: 15px; justify-content: center; margin: 15px 0 10px;">
+          <button class="modal-action-btn" onclick="openDaysDashboardPage()">Yes 🥰</button>
+          <button class="modal-action-btn" onclick="showDaysNoThreatPage()" style="background: #555;">No 😜</button>
+        </div>
+      `;
+      document.getElementById('contentModal').classList.add('active');
+    }
+
+    /* THREAT / WARNING PAGE WHEN CLICKING "NO" ON DAYS QUESTION */
+    function showDaysNoThreatPage() {
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <div style="position: relative; width: 100%; padding: 10px 0;">
+          <!-- FLOATING PUNCHING FISTS -->
+          <div class="fist-floating" style="top: -10px; left: 10px; animation-delay: 0s;">👊💥</div>
+          <div class="fist-floating" style="top: -10px; right: 10px; animation-delay: 0.8s;">👊💥</div>
+          <div class="fist-floating" style="bottom: 40px; left: 20px; animation-delay: 1.2s;">👊</div>
+          <div class="fist-floating" style="bottom: 40px; right: 20px; animation-delay: 0.4s;">👊</div>
+
+          <h3 style="color: #a11b37;">Aba Aba... 😤</h3>
+          <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+
+          <p style="text-align: center; font-size: 1rem; font-weight: bold; color: #580d19; line-height: 1.6; margin: 20px 0;">
+            Aba aba, tumatapang ka ah. Iiwan mo ako? Sighe lang, susunogin ko bahay niyo, ipagkakalat ko pang bakla ka😤
+          </p>
+
+          <div class="aesthetic-divider">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+
+          <p style="font-size: 0.85rem; color: #7a0822; font-weight: bold; margin: 10px 0;">
+            Click back and mag yes ka, wala ka ng magagawa😏
+          </p>
+
+          <div class="modal-bottom-actions">
+            <button class="modal-action-btn" onclick="startDaysTogetherFlow()">Back ↩</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function openDaysDashboardPage() {
+      setMusicTrack(envelopeTrack, true);
+
+      // Calculate Dates based on January 23, 2026
+      const startDate = new Date(2026, 0, 23); // Month is 0-indexed (0 = Jan)
+      const now = new Date();
+      
+      const diffTime = Math.abs(now - startDate);
+      const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      
+      // Calculate total months approx
+      const totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+
+      // Days until next Anniversary (Jan 23)
+      let nextAnniv = new Date(now.getFullYear(), 0, 23);
+      if (now > nextAnniv) {
+        nextAnniv.setFullYear(now.getFullYear() + 1);
+      }
+      const daysToAnniv = Math.ceil((nextAnniv - now) / (1000 * 60 * 60 * 24));
+
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>Days We've Been Together 🗓️</h3>
+        ${musicPlayerMarkup()}
+
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+
+        <p style="font-size: 0.88rem; color: #7a0822; font-weight: bold; margin-bottom: 5px;">
+          Since January 23, 2026 💖
+        </p>
+
+        <p style="font-size: 0.92rem; text-align: center; margin: 8px 0 12px; font-style: italic;">
+          "Loving you has been my favorite decision, love" 𐀔
+        </p>
+
+        <!-- COUNTER CARDS GRID -->
+        <div class="counter-cards-grid">
+          <div class="counter-card">
+            <span class="counter-num">${totalDays.toLocaleString()}</span>
+            <span class="counter-label">DAYS TOGETHER</span>
+          </div>
+
+          <div class="counter-card">
+            <span class="counter-num">${totalMonths.toLocaleString()}</span>
+            <span class="counter-label">MONTHS TOGETHER</span>
+          </div>
+
+          <div class="counter-card anniversary-card-wide">
+            <span class="counter-num">${daysToAnniv} DAYS</span>
+            <span class="counter-label">UNTIL OUR NEXT ANNIVERSARY 🥳</span>
+          </div>
+        </div>
+
+        <div class="aesthetic-divider">𓍯𓂃𓂃 PHOTOBOOTH STRIP 𓂃𓂃𓍯</div>
+
+        <!-- 4-STRIP PHOTOBOOTH FRAME WITH BEAR AT END -->
+        <div class="photobooth-strip">
+          <div class="photobooth-photo">
+            <img src="2.jpg" alt="Photobooth 1">
+          </div>
+          <div class="photobooth-photo">
+            <img src="1.jpg" alt="Photobooth 2">
+          </div>
+          <div class="photobooth-photo">
+            <img src="6.jpg" alt="Photobooth 3">
+          </div>
+          <div class="photobooth-photo">
+            <img src="9.jpg" alt="Photobooth 4">
+          </div>
+
+          <div class="photobooth-bear-footer">🧸✨</div>
+        </div>
+
+        <div class="modal-bottom-actions">
+          <button class="modal-action-btn" onclick="closeModal()">Back to Menu ↩</button>
+        </div>
+      `;
+    }
+
+    /* --- HIGH PERFORMANCE SMOOTH SPARKLING FIREWORKS WITH CURSIVE WORDS --- */
+    window.addEventListener('pointerdown', function(e) {
+      if (!enableFireworks) return;
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+
+      createSparklingFireworks(e.clientX, e.clientY);
+    });
+
+    function createSparklingFireworks(x, y) {
+      const items = ["iloveyousomuch", "imissyou", "❤️", "🦋", "🧸", "💖", "✨", "🌸", "💕"];
+      const colors = ["#ff65a3", "#f8d77f", "#ffb7c5", "#ffffff", "#c77dff"];
+
+      for (let i = 0; i < 12; i++) {
+        const fw = document.createElement('div');
+        fw.className = 'firework-particle';
+        
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+        fw.innerText = randomItem;
+
+        // Apply cursive styling to iloveyousomuch & imissyou
+        if (randomItem === "iloveyousomuch" || randomItem === "imissyou") {
+          fw.classList.add('firework-cursive');
+        } else if (randomItem.length > 3) {
+          fw.style.fontSize = (13 + Math.random() * 6) + 'px';
+        } else {
+          fw.style.fontSize = (20 + Math.random() * 10) + 'px';
+        }
+
+        fw.style.color = colors[Math.floor(Math.random() * colors.length)];
+        fw.style.left = x + 'px';
+        fw.style.top = y + 'px';
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 70 + Math.random() * 130;
+        const fwx = Math.cos(angle) * distance + 'px';
+        const fwy = (Math.sin(angle) * distance - 20) + 'px';
+        const fwr = (Math.random() * 40 - 20) + 'deg';
+
+        fw.style.setProperty('--fwx', fwx);
+        fw.style.setProperty('--fwy', fwy);
+        fw.style.setProperty('--fwr', fwr);
+
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 2200);
+      }
+    }
+
+    /* --- EXTENDED BEAUTIFUL FLOWER COLLECTION & FLYING BOUQUET ANIMATION --- */
+    function triggerFlyingBouquetAnimation(e) {
+      e.stopPropagation();
+      const bouquetBtn = document.getElementById('bouquetBtn');
+      if (bouquetBtn) bouquetBtn.style.display = 'none';
+
+      const flowerTypes = ['🥀', '💐', '🌼', '🏵️', '🌷', '𪻏', '🌺', '🌹', '💮', '🌻', '🌸', '🥀', '𪷔', '🌾', '🌹', '💐', '🌷', '🌸'];
+      const targetArea = document.getElementById('flowerContainerArea');
+      if (!targetArea) return;
+
+      const rect = targetArea.getBoundingClientRect();
+      const targetX = rect.left + rect.width / 2;
+      const targetY = rect.top + 100;
+
+      flowerTypes.forEach((flower, index) => {
+        setTimeout(() => {
+          const f = document.createElement('div');
+          f.className = 'flying-flower';
+          f.innerText = flower;
+
+          const startCorner = index % 4;
+          let startX, startY;
+          if (startCorner === 0) { startX = -40; startY = Math.random() * window.innerHeight; }
+          else if (startCorner === 1) { startX = window.innerWidth + 40; startY = Math.random() * window.innerHeight; }
+          else if (startCorner === 2) { startX = Math.random() * window.innerWidth; startY = -40; }
+          else { startX = Math.random() * window.innerWidth; startY = window.innerHeight + 40; }
+
+          f.style.left = startX + 'px';
+          f.style.top = startY + 'px';
+          document.body.appendChild(f);
+
+          setTimeout(() => {
+            f.style.left = (targetX + (Math.random() * 50 - 25)) + 'px';
+            f.style.top = (targetY + (Math.random() * 50 - 25)) + 'px';
+            f.style.transform = 'scale(1.2) rotate(' + (Math.random() * 360) + 'deg)';
+          }, 50);
+
+          setTimeout(() => f.remove(), 1600);
+        }, index * 120);
+      });
+
+      setTimeout(() => {
+        targetArea.innerHTML = `
+          <div class="assembled-bouquet-container">
+            <div class="assembled-bouquet-img">💐</div>
+            <div class="orbit-butterfly" style="animation-delay: 0s;">🦋</div>
+            <div class="orbit-butterfly" style="animation-delay: 1.3s;">✨</div>
+            <div class="orbit-butterfly" style="animation-delay: 2.6s;">🌸</div>
+          </div>
+          <p style="font-family: Arial, sans-serif; font-size:1.05rem; color:#ffb7c5; margin-top:5px; text-shadow:0 0 10px rgba(255,101,163,0.8);">
+            A gorgeous bouquet created just for my forever love, Dudu! 💖🌸
+          </p>
+        `;
+
+        spawnBouquetButterflies(targetX, targetY);
+      }, flowerTypes.length * 120 + 1000);
+    }
+
+    function spawnBouquetButterflies(cx, cy) {
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+          const b = document.createElement('div');
+          b.className = 'butterfly';
+          b.style.left = cx + 'px';
+          b.style.top = cy + 'px';
+          document.body.appendChild(b);
+
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 100 + Math.random() * 150;
+          const dx = Math.cos(angle) * dist;
+          const dy = Math.sin(angle) * dist - 50;
+
+          b.animate([
+            { transform: 'translate3d(0, 0, 0) scale(0.6)', opacity: 1 },
+            { transform: `translate3d(${dx}px, ${dy}px, 0) scale(1.2)`, opacity: 0 }
+          ], {
+            duration: 2800,
+            easing: 'ease-out',
+            fill: 'forwards'
+          });
+
+          setTimeout(() => b.remove(), 3000);
+        }, i * 140);
+      }
+    }
+
+    /* --- FIFTH BUTTON FLOW: MY APOLOGY INTERACTIVE QUESTION & PAGE --- */
+    function startApologyFlow() {
+      disableFireworks();
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>A Question For U 🥺</h3>
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩</div>
+        
+        <p style="text-align: center; font-size: 0.98rem; line-height: 1.6; margin: 15px 0;">
+          Are you mad at me this past few days? Guilty ako since aware ako na there's a sudden change of my attitude toward you. Will you forgive me? 🥺
+        </p>
+
+        <div style="display: flex; gap: 15px; justify-content: center; margin: 15px 0 10px;">
+          <button class="modal-action-btn" onclick="openMainApologyLetter()">Yes 💕</button>
+          <button class="modal-action-btn" onclick="openMainApologyLetter()">Yes 🥰</button>
+        </div>
+
+        <p style="font-size: 0.8rem; color: #8c4253; font-weight: bold; margin-top: 5px;">
+          you have no choice anwy but to forgive me HAHAHA 😜
+        </p>
+      `;
+      document.getElementById('contentModal').classList.add('active');
+    }
+
+    function openMainApologyLetter() {
+      setMusicTrack(envelopeTrack, true);
+
+      const modalBox = document.getElementById('modalBox');
+      modalBox.classList.remove('dark-radiant-theme');
+      modalBox.innerHTML = `
+        <h3>My Apology ﮩ٨ـﮩ♡</h3>
+        ${musicPlayerMarkup()}
+
+        <div class="aesthetic-divider">✮ ⋆ ˚｡𖦹 ⋆｡°✩𓂃 ࣪˖ ִֶָ𐀔</div>
+
+        <p style="text-align: center; margin-top: 10px;">
+          My dearest Dudu,<br><br>
+          I want to sincerely apologize for everything that has been happening these past few weeks. I know you noticed the sudden changes in the way I act and how I talk to you lately. Every time you expressed that you were hurt or "nagtatampo," I just ignored your feelings instead of listening to you. I knew deep down that I was making you feel neglected, but I still chose to stay distant, and I feel so guilty for treating you like that. You didn't deserve any of that coldness from me.<br><br>
+          I am so sorry for taking your patience for granted and for failing to communicate properly when things got uncomfortable. Looking back, I realize how wrong I was to brush off your feelings and leave you wondering what was wrong. You have always been so understanding, patient, and loving toward me, yet I responded by being cold and ignoring the very person who cares about me the most. It breaks my heart knowing that I caused you pain and made you feel alone in our relationship.<br><br>
+          I promise to do better, love. I want to work on my attitude and learn how to communicate with you properly instead of shutting down or ignoring you when issues come up. Thank you for staying patient with me even when I make things difficult. Your feelings matter so much to me, and I want to make it up to you and make you feel as loved and valued as you truly are. I am really, really sorry, my Dudu. I love you so much!
+        </p>
+
+        <div class="aesthetic-divider">𓍯𓂃𓂃𓂃𓂃𓂃𓍯</div>
+
+        <!-- BEAR AT THE END OF THE LETTER -->
+        <div style="font-size: 60px; margin: 15px 0 5px; text-align: center; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+          🧸💖
+        </div>
+
+        <div class="modal-bottom-actions">
+          <button class="modal-action-btn" onclick="closeModal()">Back to Menu ↩</button>
+        </div>
+      `;
+    }
+
+    function disableFireworks() {
+      enableFireworks = false;
+    }
+
+    function toggleMusic() {
+      const musicBtnText = document.getElementById('musicBtnText');
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          if (musicBtnText) musicBtnText.innerText = 'Pause Music';
+          updateMusicLabel(currentTrack);
+        }).catch(() => {
+          if (musicBtnText) musicBtnText.innerText = 'Play Music';
+          updateMusicLabel('');
+        });
+      } else {
+        bgMusic.pause();
+        updateMusicLabel('');
+        if (musicBtnText) musicBtnText.innerText = 'Play Music';
+      }
+    }
+
+    function closeModal() {
+      disableFireworks();
+      document.getElementById('contentModal').classList.remove('active');
+      setMusicTrack(envelopeTrack, true);
+    }
+
+    // Floating Particles
+    const particlesContainer = document.getElementById('particles-container');
+    for (let i = 0; i < 28; i++) {
+      const p = document.createElement('div');
+      p.className = 'foreground-particle ' + (i % 2 === 0 ? 'petal' : 'heart-particle');
+      if (i % 2 !== 0) {
+        p.innerHTML = '♥';
+      } else {
+        p.style.width = (8 + Math.random() * 8) + 'px';
+        p.style.height = (10 + Math.random() * 8) + 'px';
+      }
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = Math.random() * 8 + 's';
+      p.style.animationDuration = (5 + Math.random() * 5) + 's';
+      particlesContainer.appendChild(p);
+    }
+
+    // Floating Butterflies
+    const butterfliesContainer = document.getElementById('butterflies-container');
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement('div');
+      b.className = 'butterfly';
+      b.style.left = Math.random() * 90 + 'vw';
+      b.style.top = Math.random() * 90 + 'vh';
+      b.style.animationDelay = Math.random() * 5 + 's';
+      b.style.animationDuration = (7 + Math.random() * 6) + 's';
+      butterfliesContainer.appendChild(b);
+    }
+
+    function spawnBurstButterflies() {
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const b = document.createElement('div');
+          b.className = 'butterfly';
+          const rect = envelope.getBoundingClientRect();
+          b.style.left = (rect.left + rect.width / 2) + 'px';
+          b.style.top = (rect.top + rect.height / 2) + 'px';
+          document.body.appendChild(b);
+
+          const destX = (Math.random() - 0.5) * 350;
+          const destY = -200 - Math.random() * 200;
+
+          b.animate([
+            { transform: 'translate3d(0, 0, 0) scale(0.5)', opacity: 1 },
+            { transform: `translate3d(${destX}px, ${destY}px, 0) scale(1.2)`, opacity: 0 }
+          ], {
+            duration: 2500 + Math.random() * 1000,
+            easing: 'ease-out',
+            fill: 'forwards'
+          });
+
+          setTimeout(() => b.remove(), 3500);
+        }, i * 120);
+      }
+    }
+  </script>
+</body>
+</html>
